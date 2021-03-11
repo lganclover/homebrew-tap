@@ -58,8 +58,8 @@ class Postgresql < Formula
                 "-iwithsysroot $(perl_archlibexp)/CORE"
     end
 
-    system "./configure", *args
-    system "make"
+    system CFLAGS=-Wno-error "./configure", *args
+    system CFLAGS=-Wno-error "make"
 
     dirs = %W[datadir=#{pkgshare} libdir=#{lib} pkglibdir=#{lib}/postgresql]
 
