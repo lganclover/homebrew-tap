@@ -13,6 +13,7 @@ class Postgresql < Formula
 
     ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib} -L#{Formula["readline"].opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{Formula["openssl"].opt_include} -I#{Formula["readline"].opt_include}"
+    ENV.prepend "CFLAGS", "-Wno-error"
 
     args = %W[
       --disable-debug
@@ -58,8 +59,8 @@ class Postgresql < Formula
                 "-iwithsysroot $(perl_archlibexp)/CORE"
     end
 
-    system CFLAGS=-Wno-error "./configure", *args
-    system CFLAGS=-Wno-error "make"
+    system "./configure", *args
+    system "make"
 
     dirs = %W[datadir=#{pkgshare} libdir=#{lib} pkglibdir=#{lib}/postgresql]
 
