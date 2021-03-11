@@ -12,7 +12,7 @@ class Postgresql < Formula
     ENV["XML2_CONFIG"] = "xml2-config --exec-prefix=/usr"
 
     ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib} -L#{Formula["readline"].opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{Formula["openssl"].opt_include} -I#{Formula["readline"].opt_include} -Wno-error"
+    ENV.prepend "CPPFLAGS", "-I#{Formula["openssl"].opt_include} -I#{Formula["readline"].opt_include} -Wno-error-all"
 
     args = %W[
       --disable-debug
@@ -125,7 +125,8 @@ class Postgresql < Formula
       <key>RunAtLoad</key>
       <true/>
       <key>WorkingDirectory</key>
-      <string>#{HOMEBREW_PREFIX}</string>
+      <string>#{HOMEBREW_
+    }</string>
       <key>StandardErrorPath</key>
       <string>#{var}/log/postgres.log</string>
     </dict>
